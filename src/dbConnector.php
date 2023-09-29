@@ -1,22 +1,22 @@
 <?php
 
-class dbConnector
+class dbConnector extends PDO
 {
     private static $instance = null;
 
-    private function __construct()
+    public function __construct()
     {
+
         $dbName = "SquaresGame";
-        $nameServer = "localhost";
+        $nameServer = "host.docker.internal";
         $userName = "root";
         $password= "helloworld";
         $port = 6603;
+        $dsn = "mysql:host=$nameServer;port=$port;dbName=$dbName";
         try {
-            $connection = new PDO("mysql:host=$nameServer;dnName=$dbName port=$port", $userName, $password);
-
-            $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            echo "Connection Successfull";
+            $connection = parent::__construct($dsn, $userName, $password);
+            //$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo "Connection Successfull \n";
         } catch (PDOException $error)
         {
             echo "Connection Failed : " . $error->getMessage();
@@ -27,6 +27,7 @@ class dbConnector
         if(self::$instance == null)
         {
             self::$instance = new dbConnector();
+            return self::$instance;
         }
         else
         {
