@@ -15,7 +15,6 @@ class dbConnector extends PDO
         $dsn = "mysql:host=$nameServer;port=$port;dbName=$dbName";
         try {
             $connection = parent::__construct($dsn, $userName, $password);
-            //$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             echo "Connection Successfull \n";
         } catch (PDOException $error)
         {
