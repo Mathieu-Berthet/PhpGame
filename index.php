@@ -12,8 +12,16 @@ $bdd->query("use SquaresGame");
 
 $playerDAO = new PlayersDAO();
 
-$playerDAO->findPlayersById($bdd, 1);
+//Lancement des tests
+/*$playerDAO->findPlayers($bdd);
+$playerDAO->findPlayersByPseudo($bdd, "aHenrirt");
 
-/*$GameDAO = new GameDAO();
+$playerDAO->findPlayersByEmail($bdd, 'Henri@gmail.com');
 
-$GameDAO->findGames($bdd);*/
+$playerDAO->findPlayersByBirthDate($bdd, "2006-06-14");*/
+
+
+//$playerDAO->createPlayer($bdd, "test", "test26", "test@gmail.com", "2005-06-04");
+
+//Pour vérifier l'ajout de la données
+$playerDAO->findPlayersById($bdd, 4);

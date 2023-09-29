@@ -123,4 +123,29 @@ class PlayersDAO
         }
     }
 
+
+    function createPlayer($pdo, $pseudo, $password, $email, $birthDate)
+    {
+        try
+        {
+            $newPlayer = $pdo->prepare("INSERT INTO Players (login, password, email, birthDate) VALUES ('".$pseudo."', '".$password."', '".$email."', '".$birthDate."')");
+        }
+        catch (PDOException $error)
+        {
+            echo "Prepare Failed : " . $error->getMessage();
+        }
+        try
+        {
+            $newPlayer->execute();
+
+            $result = $newPlayer->fetchAll();
+            print_r($result);
+        }
+        catch (PDOException $error)
+        {
+            echo "Request Failed : " . $error->getMessage();
+
+        }
+    }
+
 }

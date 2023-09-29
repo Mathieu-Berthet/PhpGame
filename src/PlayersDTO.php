@@ -15,7 +15,10 @@ class PlayersDTO
 
     private $avatar;
 
-    
+    function getPseudo()
+    {
+        return this->$pseudo;
+    }
 
 
 }
